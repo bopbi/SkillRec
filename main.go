@@ -30,7 +30,7 @@ func main() {
 			dbUser, dbPassword, dbName)
 	} else if dbURLExist {
 		connStr, _ := pq.ParseURL(dbURL)
-		connStr += " sslmode=require"
+		// connStr += " sslmode=require"
 	}
 
 	db, err := sql.Open("postgres", connStr)
