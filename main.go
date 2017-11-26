@@ -9,13 +9,12 @@ import (
 
 	"github.com/bopbi/SkillRec/handlers"
 	"github.com/labstack/echo"
-	"github.com/lib/pq"
+	_ "github.com/lib/pq"
 )
 
 func main() {
 
 	port := os.Getenv("PORT")
-	dbUser, dbUserExist := os.LookupEnv("DB_USER")
 	dbURL, dbURLExist := os.LookupEnv("DATABASE_URL")
 
 	if port == "" {
@@ -23,16 +22,15 @@ func main() {
 	}
 
 	connStr := ""
-	if dbUserExist {
+
+	if dbURLExist {
+		connStr = dbURL
+	} else {
+		dbUser := os.Getenv("DB_USER")
 		dbPassword := os.Getenv("DB_PASSWORD")
 		dbName := os.Getenv("DB_NAME")
 		connStr = fmt.Sprintf("user=%s password=%s dbname=%s sslmode=disable",
 			dbUser, dbPassword, dbName)
-	} else if dbURLExist {
-		connStr, _ := pq.ParseURL(dbURL)
-		println(dbURL)
-		println(connStr)
-		connStr += " sslmode=require"
 	}
 
 	db, err := sql.Open("postgres", connStr)
