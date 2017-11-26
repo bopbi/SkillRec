@@ -30,6 +30,7 @@ func main() {
 			dbUser, dbPassword, dbName)
 	} else if dbURLExist {
 		connStr, _ := pq.ParseURL(dbURL)
+		connStr += ""
 		// connStr += " sslmode=require"
 	}
 
