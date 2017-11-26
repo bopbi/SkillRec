@@ -23,7 +23,7 @@ func GetSkillByID(db *sql.DB) echo.HandlerFunc {
 	return func(c echo.Context) error {
 		paramID := c.Param("id")
 		skillID, _ := strconv.Atoi(paramID)
-		skillResponse := repository.GetUsersByID(db, skillID)
+		skillResponse := repository.GetSkillByID(db, skillID)
 		return c.JSON(http.StatusOK, skillResponse)
 	}
 }

@@ -58,8 +58,6 @@ func main() {
 	e.GET("/api/skills/:id/users", func(c echo.Context) error {
 		return c.String(http.StatusOK, "Users for Skill with id")
 	})
-	e.GET("/api/skills/:id", func(c echo.Context) error {
-		return c.String(http.StatusOK, "Skill with id")
-	})
+	e.GET("/api/skills/:id", handlers.GetSkillByID(db))
 	e.Logger.Fatal(e.Start(":" + port))
 }
