@@ -9,6 +9,7 @@ import (
 
 	"github.com/bopbi/SkillRec/handlers"
 	"github.com/labstack/echo"
+	"github.com/labstack/echo/middleware"
 	_ "github.com/lib/pq"
 )
 
@@ -23,6 +24,11 @@ func main() {
 
 	connStr := ""
 
+	e := echo.New()
+	// Middleware
+	e.Use(middleware.Logger())
+	e.Use(middleware.Recover())
+
 	if dbURLExist {
 		connStr = dbURL
 	} else {
@@ -31,6 +37,7 @@ func main() {
 		dbName := os.Getenv("DB_NAME")
 		connStr = fmt.Sprintf("user=%s password=%s dbname=%s sslmode=disable",
 			dbUser, dbPassword, dbName)
+		e.Use(middleware.CORS())
 	}
 
 	db, err := sql.Open("postgres", connStr)
@@ -38,7 +45,6 @@ func main() {
 		log.Fatal(err)
 	}
 
-	e := echo.New()
 	e.File("/", "public/index.html")
 	e.GET("/api/hello", func(c echo.Context) error {
 		return c.String(http.StatusOK, "Hello, World!")
