@@ -1,0 +1,84 @@
+{
+	"comment": "",
+	"heroku": {
+		"goVersion": "go1.9.2"
+	},
+	"ignore": "test",
+	"package": [
+		{
+			"checksumSHA1": "5Dl+trUFDD93Sn8T51jBdUcqqJ4=",
+			"path": "github.com/labstack/echo",
+			"revision": "1049c9613cd371b7ea8f219404c9a821734781ed",
+			"revisionTime": "2017-04-26T17:09:29Z",
+			"version": "v3.1",
+			"versionExact": "v3.1.0"
+		},
+		{
+			"checksumSHA1": "R6DzcBLEP0BONPpsyr+11N7xh5w=",
+			"path": "github.com/labstack/gommon/color",
+			"revision": "57409ada9da0f2afad6664c49502f8c50fbd8476",
+			"revisionTime": "2017-09-25T05:28:17Z"
+		},
+		{
+			"checksumSHA1": "uHA6zbtxzJce4r+6uk8zu11qkuk=",
+			"path": "github.com/labstack/gommon/log",
+			"revision": "57409ada9da0f2afad6664c49502f8c50fbd8476",
+			"revisionTime": "2017-09-25T05:28:17Z"
+		},
+		{
+			"checksumSHA1": "IfZcD4U1dtllJKlPNeD2aU4Jn98=",
+			"path": "github.com/lib/pq",
+			"revision": "8c6ee72f3e6bcb1542298dd5f76cb74af9742cec",
+			"revisionTime": "2017-11-13T04:44:40Z"
+		},
+		{
+			"checksumSHA1": "AU3fA8Sm33Vj9PBoRPSeYfxLRuE=",
+			"path": "github.com/lib/pq/oid",
+			"revision": "8c6ee72f3e6bcb1542298dd5f76cb74af9742cec",
+			"revisionTime": "2017-11-13T04:44:40Z"
+		},
+		{
+			"checksumSHA1": "6WOrEA4SH+M4UPESadwZ7J4ytnE=",
+			"path": "github.com/mattn/go-colorable",
+			"revision": "6fcc0c1fd9b620311d821b106a400b35dc95c497",
+			"revisionTime": "2017-11-11T06:59:53Z"
+		},
+		{
+			"checksumSHA1": "w5RcOnfv5YDr3j2bd1YydkPiZx4=",
+			"path": "github.com/mattn/go-isatty",
+			"revision": "6ca4dbf54d38eea1a992b3c722a76a5d1c4cb25c",
+			"revisionTime": "2017-11-07T05:05:31Z"
+		},
+		{
+			"checksumSHA1": "LTOa3BADhwvT0wFCknPueQALm8I=",
+			"path": "github.com/valyala/bytebufferpool",
+			"revision": "e746df99fe4a3986f4d4f79e13c1e0117ce9c2f7",
+			"revisionTime": "2016-08-17T18:16:52Z"
+		},
+		{
+			"checksumSHA1": "gtG8jeB0fcTmKZf+6Vbcoa6nfec=",
+			"path": "github.com/valyala/fasttemplate",
+			"revision": "dcecefd839c4193db0d35b88ec65b4c12d360ab0",
+			"revisionTime": "2017-02-24T21:24:29Z"
+		},
+		{
+			"checksumSHA1": "CSMVjFF7FnylAUUKW1e/4r+VFXA=",
+			"path": "golang.org/x/crypto/acme",
+			"revision": "b080dc9a8c480b08e698fb1219160d598526310f",
+			"revisionTime": "2017-11-22T09:46:40Z"
+		},
+		{
+			"checksumSHA1": "4JU5m5FGcmRYDq/oPlwQC+K8TYA=",
+			"path": "golang.org/x/crypto/acme/autocert",
+			"revision": "b080dc9a8c480b08e698fb1219160d598526310f",
+			"revisionTime": "2017-11-22T09:46:40Z"
+		},
+		{
+			"checksumSHA1": "J8jpuwFY0KFR0hG2pgYGPkePB/Y=",
+			"path": "golang.org/x/sys/unix",
+			"revision": "4ff8c001ce4cc464e644b922325097228fce14d8",
+			"revisionTime": "2017-11-24T13:32:17Z"
+		}
+	],
+	"rootPath": "github.com/bopbi/SkillRec"
+}

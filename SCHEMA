@@ -1,0 +1,23 @@
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR NOT NULL,
+    email VARCHAR NOT NULL,
+    password VARCHAR NOT NULL,
+    created_at TIMESTAMP DEFAULT NOW()
+);
+
+CREATE TABLE skills (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR NOT NULL,
+    created_at TIMESTAMP DEFAULT NOW()
+);
+
+CREATE TABLE user_skills (
+    id SERIAL PRIMARY KEY,
+    user_id INTEGER NOT NULL,
+    skill_id INTEGER NOT NULL,
+    created_at TIMESTAMP DEFAULT NOW()
+);
+
+CREATE INDEX user_and_skill
+ON user_skills (user_id, skill_id);

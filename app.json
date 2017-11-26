@@ -1,0 +1,11 @@
+{
+    "name": "skillrec demo app",
+    "description": "",
+    "keywords": [
+      "go",
+      "sample",
+      "example"
+    ],
+    "website": "http://github.com/bopbi/SkillRec",
+    "repository": "http://github.com/bopbi/SkillRec"
+  }
