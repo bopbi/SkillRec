@@ -53,14 +53,10 @@ func main() {
 		return c.String(http.StatusOK, "Hello, World!")
 	})
 	e.GET("/api/users", handlers.GetUsers(db))
-	e.GET("/api/users/:id/skills", func(c echo.Context) error {
-		return c.String(http.StatusOK, "Skill for User with id")
-	})
+	e.GET("/api/users/:id/skills", handlers.GetSkillsByUserID(db))
 	e.GET("/api/users/:id", handlers.GetUserByID(db))
 	e.GET("/api/skills", handlers.GetSkills(db))
-	e.GET("/api/skills/:id/users", func(c echo.Context) error {
-		return c.String(http.StatusOK, "Users for Skill with id")
-	})
+	e.GET("/api/skills/:id/users", handlers.GetUsersBySkillID(db))
 	e.GET("/api/skills/:id", handlers.GetSkillByID(db))
 	e.Logger.Fatal(e.Start(":" + port))
 }
