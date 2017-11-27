@@ -29,6 +29,9 @@ func main() {
 	e.Use(middleware.Logger())
 	e.Use(middleware.Recover())
 
+	// static
+	e.Static("/static", "public/static")
+
 	if dbURLExist {
 		connStr = dbURL
 	} else {
