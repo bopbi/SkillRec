@@ -53,6 +53,7 @@ func main() {
 		return c.String(http.StatusOK, "Hello, World!")
 	})
 	e.GET("/api/users", handlers.GetUsers(db))
+	e.GET("/api/users/:id/recommenders", handlers.GetSkillRecommenderByUserID(db))
 	e.GET("/api/users/:id/skills", handlers.GetSkillsByUserID(db))
 	e.GET("/api/users/:id", handlers.GetUserByID(db))
 	e.GET("/api/skills", handlers.GetSkills(db))

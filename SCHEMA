@@ -21,3 +21,13 @@ CREATE TABLE user_skills (
 
 CREATE INDEX user_and_skill
 ON user_skills (user_id, skill_id);
+
+CREATE TABLE user_skill_recommenders (
+    id SERIAL PRIMARY KEY,
+    user_skill_id INTEGER NOT NULL,
+    recommender_id INTEGER NOT NULL,
+    created_at TIMESTAMP DEFAULT NOW()
+);
+
+CREATE INDEX user_and_skill_and_recommender
+ON user_skill_recommenders (user_skill_id, recommender_id);
