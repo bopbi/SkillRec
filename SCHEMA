@@ -31,3 +31,6 @@ CREATE TABLE user_skill_recommenders (
 
 CREATE INDEX user_and_skill_and_recommender
 ON user_skill_recommenders (user_skill_id, recommender_id);
+
+ALTER TABLE users 
+ADD COLUMN salt VARCHAR;

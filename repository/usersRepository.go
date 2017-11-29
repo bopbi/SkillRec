@@ -56,7 +56,10 @@ func GetUsersByEmail(db *sql.DB, email string) *entity.UserResponse {
 
 // InsertUser will return array of UserResponse
 func InsertUser(db *sql.DB, name string, email string, password string) *entity.UserResponse {
-	rows, err := db.Query("INSERT INTO users (name, email, password) VALUES ($1, $2, $3) RETURNING id", name, email, password)
+	salt := RandStringBytesMaskImprSrc(12)
+	password = GetMD5Hash(password + salt)
+
+	rows, err := db.Query("INSERT INTO users (name, email, password, salt) VALUES ($1, $2, $3, $4) RETURNING id", name, email, password, salt)
 	var lastID = 0
 	for rows.Next() {
 		err = rows.Scan(&lastID)

@@ -6,7 +6,6 @@ import (
 	"strconv"
 
 	"github.com/bopbi/SkillRec/repository"
-
 	"github.com/labstack/echo"
 )
 
@@ -34,7 +33,6 @@ func InsertUser(db *sql.DB) echo.HandlerFunc {
 		name := c.FormValue("name")
 		email := c.FormValue("email")
 		password := c.FormValue("password")
-		password = repository.GetMD5Hash(password)
 		usersResponse := repository.InsertUser(db, name, email, password)
 		return c.JSON(http.StatusOK, usersResponse)
 	}
