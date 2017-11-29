@@ -30,3 +30,14 @@ func GetSkillByID(db *sql.DB, id int) *entity.SkillResponse {
 	}
 	return skillResponse
 }
+
+// GetSkillByName get user by its id
+func GetSkillByName(db *sql.DB, name string) *entity.SkillResponse {
+	skillResponse := new(entity.SkillResponse)
+	rows, err := db.Query("SELECT id, name FROM skills WHERE name LIKE $1 LIMIT 1", name)
+	checker.CheckErr(err)
+	for rows.Next() {
+		err = rows.Scan(&skillResponse.ID, &skillResponse.Name)
+	}
+	return skillResponse
+}
