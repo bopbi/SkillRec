@@ -31,3 +31,14 @@ func GetUsersByID(db *sql.DB, id int) *entity.UserResponse {
 	}
 	return userResponse
 }
+
+// GetUsersByEmailAndPassword check for user by email and password
+func GetUsersByEmailAndPassword(db *sql.DB, email string, password string) *entity.UserResponse {
+	userResponse := new(entity.UserResponse)
+	rows, err := db.Query("SELECT id, name, email FROM users WHERE email LIKE $1 AND password LIKE $2 LIMIT 1", email, password)
+	checker.CheckErr(err)
+	for rows.Next() {
+		err = rows.Scan(&userResponse.ID, &userResponse.Name, &userResponse.Email)
+	}
+	return userResponse
+}
