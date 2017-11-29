@@ -42,3 +42,18 @@ func GetUsersByEmailAndPassword(db *sql.DB, email string, password string) *enti
 	}
 	return userResponse
 }
+
+// InsertUser will return array of UserResponse
+func InsertUser(db *sql.DB, name string, email string, password string) *entity.UserResponse {
+	rows, err := db.Query("INSERT INTO users (name, email, password) VALUES ($1, $2, $3) RETURNING id", name, email, password)
+	var lastID = 0
+	for rows.Next() {
+		err = rows.Scan(&lastID)
+	}
+	checker.CheckErr(err)
+	userResponse := new(entity.UserResponse)
+	userResponse.ID = int(lastID)
+	userResponse.Name = name
+	userResponse.Email = email
+	return userResponse
+}

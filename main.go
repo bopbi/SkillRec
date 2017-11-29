@@ -53,13 +53,11 @@ func main() {
 	e.GET("/api/hello", func(c echo.Context) error {
 		return c.String(http.StatusOK, "Hello, World!")
 	})
-	e.POST("/api/logout", func(c echo.Context) error {
-		return c.String(http.StatusOK, "Hello, World!")
-	})
 	e.POST("/api/login", handlers.Login(db))
 
 	// ===
 	e.GET("/api/users", handlers.GetUsers(db))
+	e.POST("/api/users", handlers.InsertUser(db))
 	e.GET("/api/users/:id/recommenders", handlers.GetSkillRecommenderByUserID(db))
 	e.GET("/api/users/:id/skills", handlers.GetSkillsByUserID(db))
 	e.GET("/api/users/:id", handlers.GetUserByID(db))
