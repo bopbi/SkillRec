@@ -43,6 +43,17 @@ func GetUsersByEmailAndPassword(db *sql.DB, email string, password string) *enti
 	return userResponse
 }
 
+// GetUsersByEmail check for user by email
+func GetUsersByEmail(db *sql.DB, email string) *entity.UserResponse {
+	userResponse := new(entity.UserResponse)
+	rows, err := db.Query("SELECT id, name, email FROM users WHERE email LIKE $1 LIMIT 1", email)
+	checker.CheckErr(err)
+	for rows.Next() {
+		err = rows.Scan(&userResponse.ID, &userResponse.Name, &userResponse.Email)
+	}
+	return userResponse
+}
+
 // InsertUser will return array of UserResponse
 func InsertUser(db *sql.DB, name string, email string, password string) *entity.UserResponse {
 	rows, err := db.Query("INSERT INTO users (name, email, password) VALUES ($1, $2, $3) RETURNING id", name, email, password)
